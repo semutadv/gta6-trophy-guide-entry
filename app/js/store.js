@@ -1,87 +1,75 @@
-// The progress store: which trophies are earned, which secrets the reader has
-// revealed, and whether the spoiler shield is on. Kept in localStorage; it can be
-// exported to a JSON file and imported back, so progress survives a change of machine
-// or browser.
+// Progress store for the Leonida guide.
+// Keeps the earned set and the spoiler switch in localStorage so a
+// player's checkmarks survive a reload. Nothing here touches the network.
+const PROGRESS_KEY = "leonida-guide-progress-v3";
+const SPOILER_KEY = "leonida-guide-spoilers-v3";
 
-const STORAGE_KEY = 'leonida-trophy-tracker-v1';
-
-export function createProgress() {
-  return { earned: new Set(), revealed: new Set(), shield: true };
-}
-
-// Turns whatever was stored (or imported by hand) into a clean progress object: only
-// integer trophy ids are kept, and the shield defaults to on unless it was saved off.
-function sanitize(raw) {
-  const progress = createProgress();
-  if (!raw || typeof raw !== 'object') return progress;
-  for (const key of ['earned', 'revealed']) {
-    if (!Array.isArray(raw[key])) continue;
-    for (const id of raw[key]) {
-      if (Number.isInteger(id)) progress[key].add(id);
-    }
-  }
-  if (typeof raw.shield === 'boolean') progress.shield = raw.shield;
-  return progress;
-}
-
-export function readProgress() {
+function readJson(key, fallback) {
   try {
-    return sanitize(JSON.parse(localStorage.getItem(STORAGE_KEY) ?? 'null'));
-  } catch {
-    return createProgress();
+    const raw = window.localStorage.getItem(key);
+    if (raw === null) return fallback;
+    return JSON.parse(raw);
+  } catch (_err) {
+    return fallback;
   }
 }
 
-export function writeProgress(progress) {
-  const raw = {
-    earned: [...progress.earned],
-    revealed: [...progress.revealed],
-    shield: progress.shield,
-  };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(raw));
-}
-
-export function flipEarned(progress, id) {
-  if (progress.earned.has(id)) progress.earned.delete(id);
-  else progress.earned.add(id);
-}
-
-// Saves the progress as a small JSON download the reader can keep or carry to another
-// machine. Names ride along with the ids so the file stays readable on its own.
-export function downloadProgress(progress, trophies) {
-  const byId = new Map(trophies.map((t) => [t.id, t.name]));
-  const payload = {
-    app: 'Leonida Trophy Guide & Tracker',
-    version: 1,
-    earnedIds: [...progress.earned].sort((a, b) => a - b),
-    earnedNames: [...progress.earned].map((id) => byId.get(id)).filter(Boolean),
-  };
-  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'leonida-trophy-progress.json';
-  link.click();
-  URL.revokeObjectURL(link.href);
-}
-
-// Reads an exported file back into a set of earned ids. Accepts this app's own export
-// shape, a bare array of trophy ids, or an array of trophy names, so older or
-// hand-kept files still import; anything unknown is ignored.
-export async function readProgressFile(file, trophies) {
-  const parsed = JSON.parse(await file.text());
-  const byName = new Map(trophies.map((t) => [t.name, t.id]));
-  const validIds = new Set(trophies.map((t) => t.id));
-  const ids = new Set();
-  const collect = (value) => {
-    if (Number.isInteger(value) && validIds.has(value)) ids.add(value);
-    else if (typeof value === 'string' && byName.has(value)) ids.add(byName.get(value));
-  };
-  if (Array.isArray(parsed)) {
-    parsed.forEach(collect);
-  } else if (parsed && typeof parsed === 'object') {
-    for (const key of ['earnedIds', 'earnedNames', 'earned']) {
-      if (Array.isArray(parsed[key])) parsed[key].forEach(collect);
-    }
+function writeJson(key, value) {
+  try {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  } catch (_err) {
+    // Storage can be unavailable in a private window; progress is
+    // best-effort and the app still works without it.
   }
-  return ids;
+}
+
+export function createProgressStore() {
+  const saved = readJson(PROGRESS_KEY, []);
+  const earned = new Set(Array.isArray(saved) ? saved.filter((n) => Number.isInteger(n)) : []);
+  let spoilersOn = readJson(SPOILER_KEY, false) === true;
+  const listeners = new Set();
+
+  function persist() {
+    writeJson(PROGRESS_KEY, [...earned].sort((a, b) => a - b));
+    writeJson(SPOILER_KEY, spoilersOn);
+  }
+
+  function announce() {
+    for (const fn of listeners) fn();
+  }
+
+  return {
+    earnedIds() {
+      return new Set(earned);
+    },
+    hasEarned(id) {
+      return earned.has(id);
+    },
+    earnedCount() {
+      return earned.size;
+    },
+    flip(id) {
+      if (earned.has(id)) earned.delete(id);
+      else earned.add(id);
+      persist();
+      announce();
+    },
+    clearAll() {
+      earned.clear();
+      persist();
+      announce();
+    },
+    spoilersShown() {
+      return spoilersOn;
+    },
+    setSpoilers(on) {
+      spoilersOn = on === true;
+      persist();
+      announce();
+    },
+    onChange(fn) {
+      listeners.add(fn);
+      return () => listeners.delete(fn);
+    },
+  };
 }

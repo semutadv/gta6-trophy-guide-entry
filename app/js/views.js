@@ -1,212 +1,162 @@
-// Paints the three things the reader sees: the platinum progress header, the tracker
-// (checklist rows plus the detail panel), and the roadmap. Everything is built with
-// DOM calls and textContent, so trophy text is shown exactly as the data file carries
-// it.
+// HTML renderers for every view of the guide.
+// All output is built from the trophy data; user-controlled text is
+// escaped before it reaches the page.
+import { gradeBadge, phaseLabel, KIND_LABELS } from "./data.js";
+import { groupByPhase, phaseProgress, nextUp, remainingByGrade } from "./roadmap.js";
 
-import { GRADE_NAMES, GRADE_RANKS, KIND_NAMES, findTrophy } from './data.js';
-import { shielded } from './filters.js';
-import { ROADMAP_PREAMBLE, ROADMAP_STAGES, flaggedTrophies } from './roadmap.js';
-
-function node(tag, className, text) {
-  const made = document.createElement(tag);
-  if (className) made.className = className;
-  if (text !== undefined) made.textContent = text;
-  return made;
+export function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
 }
 
-function pip(grade) {
-  return node('span', `medal grade-${grade}`);
+function gradeChip(trophy) {
+  return `<span class="chip chip-${escapeHtml(trophy.grade)}">${escapeHtml(gradeBadge(trophy))}</span>`;
 }
 
-function warnPill() {
-  return node('span', 'badge-miss', '⚠ Missable watch-out');
+function flagChips(trophy) {
+  let out = "";
+  if (trophy.hidden) out += `<span class="chip chip-hidden">Hidden</span>`;
+  if (trophy.missable) out += `<span class="chip chip-missable">Missable</span>`;
+  return out;
 }
 
-/* Progress header ---------------------------------------------------------- */
-
-export function paintProgress(trophies, progress) {
-  const total = trophies.length;
-  const earned = progress.earned.size;
-  document.getElementById('earned-count').textContent = String(earned);
-  const pct = total === 0 ? 0 : Math.round((earned / total) * 100);
-  document.getElementById('progress-pct').textContent = `${pct}% of the list`;
-  document.getElementById('progress-fill').style.width = `${pct}%`;
-  const parts = GRADE_RANKS.map((grade) => {
-    const inGrade = trophies.filter((t) => t.grade === grade);
-    const got = inGrade.filter((t) => progress.earned.has(t.id)).length;
-    return `${GRADE_NAMES[grade]} ${got}/${inGrade.length}`;
-  });
-  document.getElementById('progress-grades').textContent = parts.join(' · ');
+export function trophyCard(trophy, earned, spoilersOn) {
+  const shownName = trophy.hidden && !spoilersOn ? "Hidden trophy" : trophy.name;
+  const shownGuide = trophy.hidden && !spoilersOn
+    ? "Turn spoilers on to reveal this trophy."
+    : trophy.guide;
+  return `
+<article class="card${earned ? " is-earned" : ""}" data-trophy="${trophy.id}">
+  <header class="card-head">
+    <span class="card-no">#${trophy.id}</span>
+    ${gradeChip(trophy)}
+    ${flagChips(trophy)}
+  </header>
+  <h3 class="card-title">${escapeHtml(shownName)}</h3>
+  <p class="card-guide">${escapeHtml(shownGuide)}</p>
+  <p class="card-meta">${escapeHtml(KIND_LABELS[trophy.kind] || trophy.kind)} · ${escapeHtml(phaseLabel(trophy.phase))}</p>
+  <footer class="card-foot">
+    <button class="earn-btn" data-earn="${trophy.id}" aria-pressed="${earned ? "true" : "false"}">${earned ? "Earned ✓" : "Mark earned"}</button>
+    <a class="detail-link" href="?view=tracker&amp;detail=${trophy.id}">Details →</a>
+  </footer>
+</article>`;
 }
 
-/* Tracker rows ------------------------------------------------------------- */
-
-function paintRow(trophy, progress, selectedId, handlers) {
-  const hidden = shielded(trophy, progress);
-  const row = node('li', 'row');
-  if (progress.earned.has(trophy.id)) row.classList.add('earned');
-  if (trophy.id === selectedId) row.classList.add('selected');
-  row.dataset.id = String(trophy.id);
-
-  const tickLabel = node('label', 'tick');
-  const box = document.createElement('input');
-  box.type = 'checkbox';
-  box.checked = progress.earned.has(trophy.id);
-  box.setAttribute('aria-label', `Mark ${trophy.name} as earned`);
-  box.addEventListener('change', (event) => {
-    event.stopPropagation();
-    handlers.onToggle(trophy.id);
-  });
-  tickLabel.append(box);
-  row.append(tickLabel, pip(trophy.grade));
-
-  const main = node('div', 'row-main');
-  const top = node('div', 'row-top');
-  const name = node('span', 'tname', trophy.name);
-  if (hidden) name.classList.add('blurred');
-  top.append(name, node('span', 'grade-label', GRADE_NAMES[trophy.grade]));
-  top.append(node('span', 'tag', KIND_NAMES[trophy.kind]));
-  if (trophy.target) top.append(node('span', 'tag target', trophy.target));
-  if (trophy.missable) top.append(warnPill());
-  main.append(top);
-
-  const desc = node('p', 'tdesc', trophy.description);
-  if (hidden) desc.classList.add('blurred');
-  main.append(desc);
-
-  if (hidden) {
-    const hint = node('p', 'secret-note');
-    hint.append('Secret story trophy — hidden by the spoiler shield. ');
-    const reveal = node('button', 'reveal-btn', 'Reveal');
-    reveal.type = 'button';
-    reveal.addEventListener('click', (event) => {
-      event.stopPropagation();
-      handlers.onReveal(trophy.id);
-    });
-    hint.append(reveal);
-    main.append(hint);
+export function trackerView(list, earnedIds, spoilersOn) {
+  if (list.length === 0) {
+    return `<p class="empty-note">Nothing matches these filters. Loosen one and try again.</p>`;
   }
-
-  row.append(main);
-  row.addEventListener('click', () => handlers.onSelect(trophy.id));
-  return row;
+  return `<div class="card-grid">${list.map((t) => trophyCard(t, earnedIds.has(t.id), spoilersOn)).join("")}</div>`;
 }
 
-export function paintList(trophies, visible, progress, selectedId, handlers) {
-  const list = document.getElementById('trophy-list');
-  list.replaceChildren();
-  for (const trophy of visible) list.append(paintRow(trophy, progress, selectedId, handlers));
-  document.getElementById('result-count').textContent =
-    `Showing ${visible.length} of ${trophies.length} trophies`;
+export function roadmapView(list, earnedIds, spoilersOn) {
+  const groups = groupByPhase(list);
+  return groups
+    .map((group) => {
+      const prog = phaseProgress(group.items, earnedIds);
+      return `
+<section class="phase-block">
+  <header class="phase-head">
+    <div>
+      <h2 class="phase-title">${escapeHtml(group.label)}</h2>
+      <p class="phase-blurb">${escapeHtml(group.blurb)}</p>
+    </div>
+    <div class="phase-count">${prog.done} / ${prog.total} · ${prog.percent}%</div>
+  </header>
+  <div class="meter"><span style="width:${prog.percent}%"></span></div>
+  <div class="card-grid">${group.items.map((t) => trophyCard(t, earnedIds.has(t.id), spoilersOn)).join("")}</div>
+</section>`;
+    })
+    .join("");
 }
 
-/* Detail panel ------------------------------------------------------------- */
-
-export function paintDetail(trophy, progress, handlers) {
-  const panel = document.getElementById('detail');
-  panel.replaceChildren();
+export function detailView(trophy, earned, spoilersOn) {
   if (!trophy) {
-    panel.append(node('p', 'detail-empty',
-      'Pick a trophy from the list to read its official description, its guide and its sources. ' +
-      'Tick the box beside a trophy to mark it earned — progress saves as you go.'));
-    return;
+    return `<p class="empty-note">That trophy is not in the list.</p>`;
   }
-
-  const hidden = shielded(trophy, progress);
-  const top = node('div', 'row-top');
-  top.append(pip(trophy.grade), node('span', 'grade-label', GRADE_NAMES[trophy.grade]));
-  top.append(node('span', 'tag', KIND_NAMES[trophy.kind]));
-  if (trophy.target) top.append(node('span', 'tag target', trophy.target));
-  if (trophy.missable) top.append(warnPill());
-  panel.append(top);
-
-  const title = node('h2', null, hidden ? 'Secret story trophy' : trophy.name);
-  panel.append(title);
-
-  panel.append(node('h3', null, 'Official description'));
-  const official = node('p', 'official', hidden ? 'Hidden by the spoiler shield.' : trophy.description);
-  panel.append(official);
-
-  if (hidden) {
-    panel.append(node('p', 'muted',
-      'This story trophy stays hidden until you reveal it or earn it, so the list cannot spoil it.'));
-    const reveal = node('button', 'reveal-btn', 'Reveal this trophy');
-    reveal.type = 'button';
-    reveal.addEventListener('click', () => handlers.onReveal(trophy.id));
-    panel.append(reveal);
-    return;
-  }
-
-  panel.append(node('h3', null, 'Guide — our words, sources cited'));
-  panel.append(node('p', null, trophy.guideFull));
-
-  panel.append(node('h3', null, 'Quick tip'));
-  panel.append(node('p', null, trophy.hint));
-
-  if (trophy.missable) {
-    const warn = node('div', 'warn-box');
-    warn.append(node('strong', null, '⚠ Missable watch-out. '), document.createTextNode(trophy.missableReason));
-    panel.append(warn);
-  } else {
-    panel.append(node('h3', null, 'Missable?'));
-    panel.append(node('p', 'muted', trophy.missableReason));
-  }
-
-  panel.append(node('h3', null, 'Sources'));
-  const sources = node('ul');
-  for (const source of trophy.sources) sources.append(node('li', null, source));
-  panel.append(sources);
-
-  const earned = progress.earned.has(trophy.id);
-  const button = node('button', earned ? 'earn-btn done' : 'earn-btn',
-    earned ? '✓ Earned — click to undo' : 'Mark as earned');
-  button.type = 'button';
-  button.addEventListener('click', () => handlers.onToggle(trophy.id));
-  panel.append(button);
+  const shownName = trophy.hidden && !spoilersOn ? "Hidden trophy" : trophy.name;
+  const shownDesc = trophy.hidden && !spoilersOn
+    ? "Turn spoilers on to reveal this trophy."
+    : trophy.description;
+  const sources = trophy.sources.map((s) => `<li>${escapeHtml(s)}</li>`).join("");
+  return `
+<article class="detail">
+  <p class="detail-crumb"><a href="?view=tracker">← Back to the tracker</a></p>
+  <header class="detail-head">
+    <span class="card-no">#${trophy.id}</span>
+    ${gradeChip(trophy)}
+    ${flagChips(trophy)}
+  </header>
+  <h2 class="detail-title">${escapeHtml(shownName)}</h2>
+  <p class="detail-desc">${escapeHtml(shownDesc)}</p>
+  <dl class="detail-facts">
+    <div><dt>Short guide</dt><dd>${escapeHtml(trophy.guide)}</dd></div>
+    <div><dt>Full guide</dt><dd>${escapeHtml(trophy.guideFull)}</dd></div>
+    <div><dt>When to attempt it</dt><dd>${escapeHtml(trophy.route)}</dd></div>
+    <div><dt>Hint</dt><dd>${escapeHtml(trophy.hint)}</dd></div>
+    <div><dt>Missable?</dt><dd>${escapeHtml(trophy.missableReason)}</dd></div>
+    <div><dt>Kind</dt><dd>${escapeHtml(KIND_LABELS[trophy.kind] || trophy.kind)} · ${escapeHtml(phaseLabel(trophy.phase))}</dd></div>
+  </dl>
+  <h3 class="detail-sub">Sources</h3>
+  <ul class="source-list">${sources}</ul>
+  <footer class="card-foot">
+    <button class="earn-btn" data-earn="${trophy.id}" aria-pressed="${earned ? "true" : "false"}">${earned ? "Earned ✓" : "Mark earned"}</button>
+  </footer>
+</article>`;
 }
 
-/* Roadmap ------------------------------------------------------------------ */
-
-export function paintRoadmap(trophies, progress, handlers) {
-  const root = document.getElementById('roadmap');
-  root.replaceChildren();
-
-  root.append(node('p', 'roadmap-intro', ROADMAP_PREAMBLE));
-
-  const flagged = flaggedTrophies(trophies);
-  if (flagged.length > 0) {
-    const box = node('div', 'watchouts');
-    box.append(node('h2', null, '⚠ Missable watch-outs — read before you play'));
-    box.append(node('p', null,
-      'No official description states outright that a trophy is one-time-only. These are the ones whose ' +
-      'descriptions tie them to a single story moment or to choices, flagged with the limit of what the ' +
-      'description supports:'));
-    for (const trophy of flagged) {
-      const line = node('p');
-      line.append(node('strong', null, `${trophy.name}: `), document.createTextNode(trophy.missableReason));
-      box.append(line);
-    }
-    root.append(box);
+export function missablesView(list, earnedIds, spoilersOn) {
+  const items = list.filter((t) => t.missable);
+  const intro = `<p class="view-intro">Only two trophies in the whole list can be missed. Do these on your first playthrough — everything else can wait for free roam.</p>`;
+  if (items.length === 0) {
+    return intro + `<p class="empty-note">No missable trophies match the current filters.</p>`;
   }
+  return intro + trackerView(items, earnedIds, spoilersOn);
+}
 
-  ROADMAP_STAGES.forEach((stage, index) => {
-    const section = node('section', 'step');
-    section.append(node('h3', null, `Step ${index + 1} — ${stage.heading}`));
-    section.append(node('p', 'blurb', stage.note));
-    const list = node('ul');
-    for (const id of stage.trophies) {
-      const trophy = findTrophy(trophies, id);
-      if (!trophy) continue;
-      const item = node('li');
-      const done = progress.earned.has(id);
-      item.append(pip(trophy.grade));
-      item.append(node('span', 'step-name', trophy.name));
-      if (trophy.missable) item.append(warnPill());
-      item.append(node('span', done ? 'step-state' : 'step-state no', done ? '✓ earned' : 'not yet'));
-      item.addEventListener('click', () => handlers.onSelect(id));
-      list.append(item);
-    }
-    section.append(list);
-    root.append(section);
-  });
+// NEW — Planner: per-phase progress bars plus the next-up queue.
+export function plannerView(all, earnedIds) {
+  const groups = groupByPhase(all);
+  const totalDone = earnedIds.size;
+  const total = all.length;
+  const totalPercent = total === 0 ? 0 : Math.round((totalDone / total) * 100);
+  const queue = nextUp(all, earnedIds, 5);
+  const byGrade = remainingByGrade(all, earnedIds);
+
+  const bars = groups
+    .map((group) => {
+      const prog = phaseProgress(group.items, earnedIds);
+      return `
+<div class="plan-row">
+  <span class="plan-label">${escapeHtml(group.label)}</span>
+  <div class="meter"><span style="width:${prog.percent}%"></span></div>
+  <span class="plan-count">${prog.done}/${prog.total}</span>
+</div>`;
+    })
+    .join("");
+
+  const queueItems = queue.length === 0
+    ? `<p class="empty-note">Everything is earned — the platinum is yours.</p>`
+    : `<ol class="queue-list">${queue
+        .map(
+          (t) => `<li><a href="?view=tracker&amp;detail=${t.id}"><strong>#${t.id} ${escapeHtml(t.name)}</strong></a> — ${escapeHtml(t.route)}</li>`
+        )
+        .join("")}</ol>`;
+
+  return `
+<section class="plan-panel">
+  <h2 class="plan-title">Your route to the platinum</h2>
+  <p class="plan-summary">${totalDone} of ${total} earned · ${totalPercent}% complete</p>
+  <div class="meter meter-big"><span style="width:${totalPercent}%"></span></div>
+  <h3 class="plan-sub">Progress by phase</h3>
+  ${bars}
+  <h3 class="plan-sub">Still to earn</h3>
+  <p class="plan-grades">Platinum ${byGrade.platinum} · Gold ${byGrade.gold} · Silver ${byGrade.silver} · Bronze ${byGrade.bronze}</p>
+  <h3 class="plan-sub">Next up</h3>
+  ${queueItems}
+</section>`;
 }
