@@ -1,34 +1,38 @@
-// Progress store: what is earned, what the spoiler shield has revealed, and whether the
-// shield is on. Saved in localStorage; exportable to a JSON file and importable back.
+// The progress store: which trophies are earned, which secrets the reader has
+// revealed, and whether the spoiler shield is on. Kept in localStorage; it can be
+// exported to a JSON file and imported back, so progress survives a change of machine
+// or browser.
 
 const STORAGE_KEY = 'leonida-trophy-tracker-v1';
 
-export function emptyProgress() {
+export function createProgress() {
   return { earned: new Set(), revealed: new Set(), shield: true };
 }
 
-function normalise(raw) {
-  const progress = emptyProgress();
+// Turns whatever was stored (or imported by hand) into a clean progress object: only
+// integer trophy ids are kept, and the shield defaults to on unless it was saved off.
+function sanitize(raw) {
+  const progress = createProgress();
   if (!raw || typeof raw !== 'object') return progress;
-  if (Array.isArray(raw.earned)) {
-    for (const id of raw.earned) if (Number.isInteger(id)) progress.earned.add(id);
-  }
-  if (Array.isArray(raw.revealed)) {
-    for (const id of raw.revealed) if (Number.isInteger(id)) progress.revealed.add(id);
+  for (const key of ['earned', 'revealed']) {
+    if (!Array.isArray(raw[key])) continue;
+    for (const id of raw[key]) {
+      if (Number.isInteger(id)) progress[key].add(id);
+    }
   }
   if (typeof raw.shield === 'boolean') progress.shield = raw.shield;
   return progress;
 }
 
-export function loadProgress() {
+export function readProgress() {
   try {
-    return normalise(JSON.parse(localStorage.getItem(STORAGE_KEY) ?? 'null'));
+    return sanitize(JSON.parse(localStorage.getItem(STORAGE_KEY) ?? 'null'));
   } catch {
-    return emptyProgress();
+    return createProgress();
   }
 }
 
-export function saveProgress(progress) {
+export function writeProgress(progress) {
   const raw = {
     earned: [...progress.earned],
     revealed: [...progress.revealed],
@@ -37,13 +41,14 @@ export function saveProgress(progress) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(raw));
 }
 
-export function toggleEarned(progress, id) {
+export function flipEarned(progress, id) {
   if (progress.earned.has(id)) progress.earned.delete(id);
   else progress.earned.add(id);
 }
 
-// Downloads the progress as a small JSON file the reader can keep or move machines with.
-export function exportProgress(progress, trophies) {
+// Saves the progress as a small JSON download the reader can keep or carry to another
+// machine. Names ride along with the ids so the file stays readable on its own.
+export function downloadProgress(progress, trophies) {
   const byId = new Map(trophies.map((t) => [t.id, t.name]));
   const payload = {
     app: 'Leonida Trophy Guide & Tracker',
@@ -59,9 +64,10 @@ export function exportProgress(progress, trophies) {
   URL.revokeObjectURL(link.href);
 }
 
-// Reads an exported file back. Accepts this app's export shape, a bare array of trophy
-// ids, or an array of trophy names, so older or hand-kept files still import.
-export async function importProgress(file, trophies) {
+// Reads an exported file back into a set of earned ids. Accepts this app's own export
+// shape, a bare array of trophy ids, or an array of trophy names, so older or
+// hand-kept files still import; anything unknown is ignored.
+export async function readProgressFile(file, trophies) {
   const parsed = JSON.parse(await file.text());
   const byName = new Map(trophies.map((t) => [t.name, t.id]));
   const validIds = new Set(trophies.map((t) => t.id));
@@ -70,11 +76,12 @@ export async function importProgress(file, trophies) {
     if (Number.isInteger(value) && validIds.has(value)) ids.add(value);
     else if (typeof value === 'string' && byName.has(value)) ids.add(byName.get(value));
   };
-  if (Array.isArray(parsed)) parsed.forEach(collect);
-  else if (parsed && typeof parsed === 'object') {
-    if (Array.isArray(parsed.earnedIds)) parsed.earnedIds.forEach(collect);
-    if (Array.isArray(parsed.earnedNames)) parsed.earnedNames.forEach(collect);
-    if (Array.isArray(parsed.earned)) parsed.earned.forEach(collect);
+  if (Array.isArray(parsed)) {
+    parsed.forEach(collect);
+  } else if (parsed && typeof parsed === 'object') {
+    for (const key of ['earnedIds', 'earnedNames', 'earned']) {
+      if (Array.isArray(parsed[key])) parsed[key].forEach(collect);
+    }
   }
   return ids;
 }

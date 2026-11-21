@@ -1,34 +1,40 @@
-// Filter state and the two rules the tracker lives by: which trophies a filter set
-// shows, and which trophies the spoiler shield currently hides.
+// Filtering for the tracker, in two parts: the rule for which trophies the spoiler
+// shield is hiding, and the rule for which trophies a filter set shows. The shield
+// hides a secret (story) trophy's name and description until the reader reveals that
+// trophy or earns it. With the shield switched off, nothing is hidden.
 
-import { isSecret } from './data.js';
+import { isHiddenTrophy } from './data.js';
 
-export function emptyFilters() {
+export function blankFilters() {
   return { query: '', grade: 'all', kind: 'all', state: 'all' };
 }
 
-// The shield hides a secret (story) trophy's name and description until the reader
-// reveals it or earns it. With the shield off, nothing is hidden.
-export function isShielded(trophy, progress) {
+export function shielded(trophy, progress) {
   if (!progress.shield) return false;
-  if (!isSecret(trophy)) return false;
+  if (!isHiddenTrophy(trophy)) return false;
   if (progress.earned.has(trophy.id)) return false;
   if (progress.revealed.has(trophy.id)) return false;
   return true;
 }
 
-export function matchesFilters(trophy, filters, progress) {
-  if (filters.grade !== 'all' && trophy.grade !== filters.grade) return false;
-  if (filters.kind !== 'all' && trophy.kind !== filters.kind) return false;
-  if (filters.state === 'earned' && !progress.earned.has(trophy.id)) return false;
-  if (filters.state === 'unearned' && progress.earned.has(trophy.id)) return false;
-  if (filters.query) {
-    const haystack = `${trophy.name}\n${trophy.description}`.toLowerCase();
-    if (!haystack.includes(filters.query.toLowerCase())) return false;
-  }
-  return true;
+// One predicate per filter axis, checked in a fixed order so the result is easy to
+// reason about: grade, then kind, then earned state, then the text search.
+const PREDICATES = [
+  (t, f) => f.grade === 'all' || t.grade === f.grade,
+  (t, f) => f.kind === 'all' || t.kind === f.kind,
+  (t, f, p) =>
+    f.state === 'all' ||
+    (f.state === 'earned' ? p.earned.has(t.id) : !p.earned.has(t.id)),
+  (t, f) => {
+    if (!f.query) return true;
+    return `${t.name}\n${t.description}`.toLowerCase().includes(f.query.toLowerCase());
+  },
+];
+
+export function passes(trophy, filters, progress) {
+  return PREDICATES.every((check) => check(trophy, filters, progress));
 }
 
-export function visibleTrophies(trophies, filters, progress) {
-  return trophies.filter((t) => matchesFilters(t, filters, progress));
+export function applyFilters(trophies, filters, progress) {
+  return trophies.filter((t) => passes(t, filters, progress));
 }

@@ -11,14 +11,14 @@
   <div class="masthead-text">
     <p class="kicker">Grand Theft Auto VI · PlayStation 5</p>
     <h1>Leonida Trophy Guide <span>&amp; Tracker</span></h1>
-    <p class="sub">All 55 official trophies — 1 platinum, 2 gold, 6 silver, 46 bronze — with a saved checklist, a roadmap to the platinum, the missable watch-outs flagged, and a guide to each trophy in our own words with its sources cited.</p>
+    <p class="sub">The full official list of 55 trophies — 1 platinum, 2 gold, 6 silver, 46 bronze — as a saved checklist with a roadmap to the platinum, the missable watch-outs flagged, and an honestly sourced guide for every trophy.</p>
   </div>
   <div class="progress-card">
     <div class="progress-big"><span id="earned-count">0</span><span class="of"> / 55 earned</span></div>
     <div class="progress-bar"><div id="progress-fill"></div></div>
     <p class="progress-pct" id="progress-pct">0% of the list</p>
     <p class="progress-grades" id="progress-grades"></p>
-    <p class="progress-note">Progress saves in this browser. Export it before you switch machines.</p>
+    <p class="progress-note">Progress lives in this browser. Export it before you switch machines.</p>
   </div>
 </header>
 
@@ -31,6 +31,12 @@
   <section id="view-tracker">
     <div class="toolbar">
       <input id="search" type="search" placeholder="Search a trophy name or description…" aria-label="Search trophies">
+      <label class="shield-toggle"><input id="shield" type="checkbox" checked> Spoiler shield — hide secret story trophies until revealed or earned</label>
+      <div class="chip-group" id="state-chips" role="group" aria-label="Filter by state">
+        <button type="button" class="chip active" data-state="all">All</button>
+        <button type="button" class="chip" data-state="earned">Earned</button>
+        <button type="button" class="chip" data-state="unearned">Unearned</button>
+      </div>
       <div class="chip-group" id="grade-chips" role="group" aria-label="Filter by grade">
         <button type="button" class="chip active" data-grade="all">All grades</button>
         <button type="button" class="chip" data-grade="platinum">Platinum</button>
@@ -45,12 +51,6 @@
         <button type="button" class="chip" data-kind="collectible">Collectibles &amp; counts</button>
         <button type="button" class="chip" data-kind="misc">Activities &amp; misc</button>
       </div>
-      <div class="chip-group" id="state-chips" role="group" aria-label="Filter by state">
-        <button type="button" class="chip active" data-state="all">All</button>
-        <button type="button" class="chip" data-state="earned">Earned</button>
-        <button type="button" class="chip" data-state="unearned">Unearned</button>
-      </div>
-      <label class="shield-toggle"><input id="shield" type="checkbox" checked> Spoiler shield — hide secret story trophies until revealed or earned</label>
       <div class="io-buttons">
         <button id="export" type="button">Export progress</button>
         <label class="import-label">Import progress <input id="import" type="file" accept="application/json"></label>
@@ -72,7 +72,7 @@
 </main>
 
 <footer>
-  <p>Honesty rule used throughout: every guide is our own words built from the official trophy description, and the source is named beside it. Anything that goes beyond the description is labelled a general series pattern and unconfirmed for GTA VI. Where a description states no steps, this guide says so instead of inventing them. Trophy names, descriptions and grades are the official PlayStation list, carried in <span class="mono">app/data/trophies.json</span>. This app works fully offline and loads nothing from the network.</p>
+  <p>How this guide stays honest: each guide is written for this entry from the official trophy description, with the source named beside it. Anything beyond the description is labelled a general series pattern, unconfirmed for GTA VI. Where a description gives no steps, the guide says so rather than inventing them. Names, descriptions and grades are the official PlayStation list, carried in <span class="mono">app/data/trophies.json</span>. The app runs entirely offline and fetches nothing from the network.</p>
 </footer>
 
 <script type="module" src="js/main.js"></script>
