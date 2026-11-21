@@ -8,385 +8,735 @@
    "name": "Vice Got a Price!",
    "description": "Congratulations! You're a Leonida Legend.",
    "grade": "platinum",
-   "guide": "Earn the other 54 trophies."
+   "guide": "Earn the other 54 trophies.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable itself — it follows the other 54; only the watch-outs flagged in this guide need care.",
+   "guideFull": "The platinum: it unlocks on its own when the other 54 trophies are earned, so there is nothing separate to do for it. Plan around the gold 100% completion trophy and the story chapters first, then sweep what is left (source: official trophy description). Nothing about it is missable beyond the watch-outs flagged in this guide.",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 2,
    "name": "Just Like Paradise",
    "description": "Complete Gone Fishing.",
    "grade": "bronze",
-   "guide": "Finish the opening mission, Gone Fishing."
+   "guide": "Finish the opening mission, Gone Fishing.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable — story progression: the opening mission completes as the story begins.",
+   "guideFull": "Earned for completing Gone Fishing, the opening mission named in the description. Play through the opening until the mission ends; as a story-completion trophy it cannot be missed on a normal playthrough (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 3,
    "name": "Paradise Lost",
    "description": "Complete Chapter 1.",
    "grade": "bronze",
-   "guide": "Finish Chapter 1."
+   "guide": "Finish Chapter 1.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable — story progression: the chapter completes as the story advances.",
+   "guideFull": "Complete Chapter 1. Chapter trophies pop as the story advances, so this one needs no preparation and cannot be missed on the way through (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 4,
    "name": "T**s Ass Drug Money",
    "description": "Complete Chapter 2.",
    "grade": "bronze",
-   "guide": "Finish Chapter 2."
+   "guide": "Finish Chapter 2.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable — story progression: the chapter completes as the story advances.",
+   "guideFull": "Complete Chapter 2. Like every chapter trophy here it is earned by reaching the end of the chapter, so keep playing the story; nothing in the description adds a condition or a choice (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 5,
    "name": "Vice City, Baby!",
    "description": "Complete Chapter 3.",
    "grade": "bronze",
-   "guide": "Finish Chapter 3."
+   "guide": "Finish Chapter 3.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable — story progression: the chapter completes as the story advances.",
+   "guideFull": "Complete Chapter 3. Story progression again: finish the chapter's missions and the trophy follows, with no side condition named in the description (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 6,
    "name": "Top Of The World, Ma",
    "description": "Complete Chapter 4.",
    "grade": "bronze",
-   "guide": "Finish Chapter 4."
+   "guide": "Finish Chapter 4.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable — story progression: the chapter completes as the story advances.",
+   "guideFull": "Complete Chapter 4. The last of the numbered chapter trophies in the list; earn it by playing the story to the end of the chapter (source: official trophy description). Before the final mission after it, clear the two watch-outs flagged in this guide.",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 7,
    "name": "You Gotta Know When to Get Off",
    "description": "Complete the final mission.",
    "grade": "gold",
-   "guide": "Finish the final mission (gold)."
+   "guide": "Finish the final mission (gold).",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable — story progression: the final mission completes the story.",
+   "guideFull": "Complete the final mission — the last story beat named in the description, and the list's story gold. Before starting it, clear the watch-outs in this guide (the VCIA departure and the choice counter), because a finished story may not let you back into every moment (general GTA series pattern — unconfirmed for GTA VI). The trophy itself is story progression and not missable (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 8,
    "name": "Trust",
    "description": "Complete Breakfast Run.",
    "grade": "bronze",
-   "guide": "Finish the mission Breakfast Run."
+   "guide": "Finish the mission Breakfast Run.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable — story progression: the mission completes as part of the story.",
+   "guideFull": "Complete the mission Breakfast Run. It arrives as part of the story, so finish the mission when it is offered; the description names no extra condition (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 9,
    "name": "Break the Bank",
    "description": "Complete The Cartel Heist.",
    "grade": "bronze",
-   "guide": "Finish the mission The Cartel Heist."
+   "guide": "Finish the mission The Cartel Heist.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable — story progression: the mission completes as part of the story.",
+   "guideFull": "Complete The Cartel Heist, the heist mission named in the description. Play it when the story offers it and finish it; a heist may ask for preparation first, but the trophy only asks for completion (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 10,
    "name": "Family Matters",
    "description": "Complete Child's Play.",
    "grade": "bronze",
-   "guide": "Finish the mission Child's Play."
+   "guide": "Finish the mission Child's Play.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable — story progression: the mission completes as part of the story.",
+   "guideFull": "Complete the mission Child's Play. A named story mission: take it when it appears and see it through to the end (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 11,
    "name": "DWNFALL",
    "description": "Complete Headliners.",
    "grade": "bronze",
-   "guide": "Finish the mission Headliners."
+   "guide": "Finish the mission Headliners.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable — story progression: the mission completes as part of the story.",
+   "guideFull": "Complete the mission Headliners. Story progression: the trophy follows the mission's completion and nothing else in the description (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 12,
    "name": "Hi-Jacked",
    "description": "Complete VCIA Takedown.",
    "grade": "bronze",
-   "guide": "Finish the mission VCIA Takedown."
+   "guide": "Finish the mission VCIA Takedown.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable — story progression: the mission completes as part of the story.",
+   "guideFull": "Complete VCIA Takedown, the story mission set at VCIA. Finish the mission when it comes; while you are at VCIA for it, also try the unscheduled departure described under Catch Me If You Can, which this guide flags as a watch-out (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 13,
    "name": "Snow Storm",
    "description": "Complete Operation Savage Glory.",
    "grade": "bronze",
-   "guide": "Finish the mission Operation Savage Glory."
+   "guide": "Finish the mission Operation Savage Glory.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable — story progression: the mission completes as part of the story.",
+   "guideFull": "Complete Operation Savage Glory. A named story mission: finish it when the story offers it; the description adds no condition beyond completion (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 14,
    "name": "A Long Road",
    "description": "Attain 100% Completion.",
    "grade": "gold",
-   "guide": "Reach 100% completion (gold)."
+   "guide": "Reach 100% completion (gold).",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — a completion total that can be worked on until it is reached.",
+   "guideFull": "Attain 100% completion. This is the long pole of the platinum: it sits on top of the story, the stranger strands and most of the counted activities in this guide, so track it last and use the game's completion counter to find what is left (source: official trophy description). Which activities count toward the 100% is not stated in the description (unconfirmed).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 15,
    "name": "Cunning Stunts",
    "description": "Complete 250 Stunts.",
    "grade": "silver",
-   "guide": "Pull off 250 stunts (silver)."
+   "guide": "Pull off 250 stunts (silver).",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — a counted total that can be ground out at any time.",
+   "target": "250 stunts",
+   "guideFull": "Complete 250 stunts. The description gives the count, so this is a grind of repeated stunt opportunities rather than a single event; stunt jumps are a series staple that can be retried freely (general GTA series pattern — unconfirmed for GTA VI). Not missable (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 16,
    "name": "Master of None",
    "description": "Try each type of activity once.",
    "grade": "bronze",
-   "guide": "Try all 9 activity types once."
+   "guide": "Try all 9 activity types once.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — activities stay available once unlocked.",
+   "target": "9 activity types",
+   "guideFull": "Try each type of activity once — the official list data counts 9 activity types. Sample one of everything the map offers as activities unlock; a single attempt of each is enough, you do not need to win them (source: official trophy description; count from the official list data).",
+   "sources": ["Official trophy description (PlayStation list)", "PSN count target (official list data)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 17,
    "name": "The Shootist",
    "description": "Earn a gold medal in all Shooting Range challenges.",
    "grade": "silver",
-   "guide": "Gold all 42 Shooting Range challenges (silver)."
+   "guide": "Gold all 42 Shooting Range challenges (silver).",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — range challenges can be retried until gold.",
+   "target": "42 Shooting Range challenges",
+   "guideFull": "Earn a gold medal in all Shooting Range challenges — 42 of them by the official list data. Ranges can be retried, so improve run by run; gold everywhere is a skill grind, not a one-time chance, and not missable (source: official trophy description; count from the official list data).",
+   "sources": ["Official trophy description (PlayStation list)", "PSN count target (official list data)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 18,
    "name": "Top Fun",
    "description": "Win a Top Fun Drone Race at every location.",
    "grade": "bronze",
-   "guide": "Win a Top Fun drone race at all 14 locations."
+   "guide": "Win a Top Fun drone race at all 14 locations.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — races can be retried at every location.",
+   "target": "14 locations",
+   "guideFull": "Win a Top Fun Drone Race at every location — 14 locations by the official list data. Win once at each; races are repeatable, so this is a sweep across the map, not a risk (source: official trophy description; count from the official list data).",
+   "sources": ["Official trophy description (PlayStation list)", "PSN count target (official list data)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 19,
    "name": "Earn Cash, Not Kudos",
    "description": "Win 20 different races.",
    "grade": "bronze",
-   "guide": "Win 20 different races."
+   "guide": "Win 20 different races.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — races can be retried; only the variety is required.",
+   "target": "20 different races",
+   "guideFull": "Win 20 different races — different is the word that matters in the description, so move to a new race after each win instead of farming a favourite. Repeatable and not missable (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 20,
    "name": "Baited My Tackle",
    "description": "Beat Cal in a fishing challenge.",
    "grade": "bronze",
-   "guide": "Beat Cal in a fishing challenge."
+   "guide": "Beat Cal in a fishing challenge.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable on the description — a single challenge against a named opponent, nothing one-time stated.",
+   "guideFull": "Beat Cal in a fishing challenge. Find Cal's fishing challenge and win it; challenges of this kind can normally be retried after a loss (general GTA series pattern — unconfirmed for GTA VI). The description names a single opponent and a single win, so nothing here reads as missable (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 21,
    "name": "Stick Fiddler",
    "description": "Complete an arcade game.",
    "grade": "bronze",
-   "guide": "Finish one arcade game."
+   "guide": "Finish one arcade game.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — arcade games can be replayed.",
+   "guideFull": "Complete an arcade game — one full game at an arcade cabinet is enough. Any cabinet and any game should do; the description asks for completion, not a high score (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 22,
    "name": "Road to Rehabilitation",
    "description": "Complete the final mission for Andy.",
    "grade": "bronze",
-   "guide": "Finish Andy's last mission."
+   "guide": "Finish Andy's last mission.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable on the description — a strand that stays open until finished.",
+   "guideFull": "Complete the final mission for Andy — the end of Andy's strand. Work through Andy's missions as they appear and finish the last one; the description names the strand's end, not a choice or a deadline (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 23,
    "name": "This Was No Boat Accident",
    "description": "Complete the final mission for Kenton.",
    "grade": "bronze",
-   "guide": "Finish Kenton's last mission."
+   "guide": "Finish Kenton's last mission.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable on the description — a strand that stays open until finished.",
+   "guideFull": "Complete the final mission for Kenton. Play Kenton's strand through to its last mission; like the other character strands here, nothing in the description marks it as one-time (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 24,
    "name": "The Lone Rider",
    "description": "Complete the final mission for Billy.",
    "grade": "bronze",
-   "guide": "Finish Billy's last mission."
+   "guide": "Finish Billy's last mission.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable on the description — a strand that stays open until finished.",
+   "guideFull": "Complete the final mission for Billy. Follow Billy's strand to its end; the trophy asks for the strand's final mission and nothing more specific (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 25,
    "name": "Strangers & Freaks",
    "description": "Complete 8 mission strands for strangers across the state of Leonida.",
    "grade": "silver",
-   "guide": "Finish 8 stranger strands (silver)."
+   "guide": "Finish 8 stranger strands (silver).",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable on the description — stranger strands are side content counted to 8.",
+   "target": "8 stranger strands",
+   "guideFull": "Complete 8 mission strands for strangers across Leonida. Each strand is a chain for one stranger; finish eight chains end to end. Stranger strands are side content that stays available as you explore (general GTA series pattern — unconfirmed for GTA VI), so treat this as cleanup rather than a missable (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 26,
    "name": "Supply & Demand",
    "description": "Complete the final mission for Randy.",
    "grade": "bronze",
-   "guide": "Finish Randy's last mission."
+   "guide": "Finish Randy's last mission.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable on the description — a strand that stays open until finished.",
+   "guideFull": "Complete the final mission for Randy. Work Randy's strand through its earlier missions to reach the final one the description names (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 27,
    "name": "Spin On This!",
    "description": "Complete the final mission for Tyrone.",
    "grade": "bronze",
-   "guide": "Finish Tyrone's last mission."
+   "guide": "Finish Tyrone's last mission.",
+   "kind": "story",
+   "hidden": true,
+   "missable": false,
+   "missableReason": "Not missable on the description — a strand that stays open until finished.",
+   "guideFull": "Complete the final mission for Tyrone. Finish Tyrone's strand end to end; the description asks for its last mission and states no extra condition (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 28,
    "name": "Positive Mental Attitude",
    "description": "Meditate at every spot across Leonida.",
    "grade": "bronze",
-   "guide": "Meditate at all 18 spots."
+   "guide": "Meditate at all 18 spots.",
+   "kind": "collectible",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — the spots are fixed world locations that stay put.",
+   "target": "18 meditation spots",
+   "guideFull": "Meditate at every spot across Leonida — 18 spots by the official list data. This is a map sweep: visit each meditation spot once. Spots are world locations that stay where they are, so the sweep can be finished at any time (source: official trophy description; count from the official list data).",
+   "sources": ["Official trophy description (PlayStation list)", "PSN count target (official list data)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 29,
    "name": "Fair Game",
    "description": "Hunt a unique animal for Bret.",
    "grade": "bronze",
-   "guide": "Hunt the unique animal for Bret."
+   "guide": "Hunt the unique animal for Bret.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable on the description — a task for a named character, nothing one-time stated.",
+   "guideFull": "Hunt a unique animal for Bret. One specific animal, hunted as Bret's task; take it on when Bret offers the hunt. The description names a single unique target, so if a hunt goes wrong, retry it rather than treating it as lost (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 30,
    "name": "Don't Touch My Deck",
    "description": "Complete 3 Collectible Card sets.",
    "grade": "silver",
-   "guide": "Complete 3 collectible card sets (silver)."
+   "guide": "Complete 3 collectible card sets (silver).",
+   "kind": "collectible",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — collectible cards stay in the world until picked up.",
+   "target": "3 card sets",
+   "guideFull": "Complete 3 Collectible Card sets. Cards are found in the world and gathered into sets; finish any three full sets. Collectibles stay in the world until picked up (general GTA series pattern — unconfirmed for GTA VI), so this is a sweep, not a missable (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 31,
    "name": "You WAiNKer!",
    "description": "WAiNK It at 100 locations.",
    "grade": "silver",
-   "guide": "WAiNK It at 100 locations (silver)."
+   "guide": "WAiNK It at 100 locations (silver).",
+   "kind": "collectible",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — a counted sweep over locations.",
+   "target": "100 locations",
+   "guideFull": "WAiNK It at 100 locations. The description counts locations, so repeat the WAiNK It action somewhere new each time until the counter reaches 100; what exactly WAiNK It is, the description does not say, and this guide will not guess (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 32,
    "name": "One Last Thing",
    "description": "Complete 50 Challenges.",
    "grade": "bronze",
-   "guide": "Finish 50 challenges."
+   "guide": "Finish 50 challenges.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — challenges can be retried.",
+   "target": "50 challenges",
+   "guideFull": "Complete 50 Challenges. A counted grind across the game's challenge list; failed challenges can be retried, so work through them in any order and let the counter build (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 33,
    "name": "Hot Together",
    "description": "Lose a 4 star Wanted Level with your partner and escape the heat.",
    "grade": "bronze",
-   "guide": "Lose a 4-star wanted level with your partner."
+   "guide": "Lose a 4-star wanted level with your partner.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — repeatable in free roam with your partner.",
+   "guideFull": "Lose a 4 star Wanted Level with your partner and escape the heat. Build a 4-star wanted level while your partner is with you, then break line of sight and stay hidden until the stars clear; the description needs the escape done together (source: official trophy description). Repeatable in free roam, so a failed attempt costs nothing.",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 34,
    "name": "Retail Therapy",
    "description": "Rob 3 shops back-to-back with your partner without losing your Wanted Level.",
    "grade": "bronze",
-   "guide": "Rob 3 shops in a row with your partner, keeping your wanted level."
+   "guide": "Rob 3 shops in a row with your partner, keeping your wanted level.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — repeatable in free roam with your partner.",
+   "guideFull": "Rob 3 shops back-to-back with your partner without losing your Wanted Level. The catch is in the description: the wanted level must stay up between shops, so move fast from one robbery to the next with your partner along (source: official trophy description). Repeatable; expect a few failed runs while you learn the timing.",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 35,
    "name": "Whip It Good",
    "description": "Discover 100 vehicles.",
    "grade": "bronze",
-   "guide": "Discover 100 vehicles."
+   "guide": "Discover 100 vehicles.",
+   "kind": "collectible",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — a discovery count that only grows.",
+   "target": "100 vehicles",
+   "guideFull": "Discover 100 vehicles. Get in — or otherwise register — 100 different vehicles as you play; traffic variety grows as you explore new areas (general GTA series pattern — unconfirmed for GTA VI). A passive sweep: keep an eye on the count late in the game (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 36,
    "name": "Gunslinger",
    "description": "Take down 5 enemies in a single use of Combat Focus.",
    "grade": "bronze",
-   "guide": "Down 5 enemies in one Combat Focus."
+   "guide": "Down 5 enemies in one Combat Focus.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — repeatable wherever enemies group up.",
+   "target": "5 enemies in one Combat Focus",
+   "guideFull": "Take down 5 enemies in a single use of Combat Focus. Save the attempt for a group of five or more enemies, trigger Combat Focus once, and drop all five before it ends (source: official trophy description). Repeatable wherever enemies cluster, so pick your crowd.",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 37,
    "name": "Catch Me If You Can",
    "description": "Make an unscheduled departure at VCIA.",
    "grade": "bronze",
-   "guide": "Leave VCIA in an unscheduled way."
+   "guide": "Leave VCIA in an unscheduled way.",
+   "kind": "missable",
+   "hidden": false,
+   "missable": true,
+   "missableReason": "Watch-out: the description ties this to VCIA, the setting of the story mission VCIA Takedown — if the departure is only possible during that mission, it cannot be repeated once the mission is over. The description does not confirm either way, so do it while you are there.",
+   "guideFull": "Make an unscheduled departure at VCIA. VCIA is the airport of the story mission VCIA Takedown, so try this while that mission has you there: leave the airport in a way the schedule does not intend — the description does not spell out the method (source: official trophy description). Flagged as a watch-out: if the departure is only possible during that mission, it cannot be repeated after it.",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 38,
    "name": "Challenging Tank",
    "description": "Kinda hot in these Rhinos.",
    "grade": "bronze",
-   "guide": "Deal with Rhinos (tanks)."
+   "guide": "Deal with Rhinos (tanks).",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable on the description — no one-time condition is stated.",
+   "guideFull": "The description only says 'Kinda hot in these Rhinos' — a Rhino is the series' tank. Expect to face or use a Rhino tank and survive the encounter the trophy is tied to. Anything more specific would be a guess, and the description gives no steps (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 39,
    "name": "Sneakthief",
    "description": "Rob a jewelry store without being detected.",
    "grade": "bronze",
-   "guide": "Rob a jewelry store without being seen."
+   "guide": "Rob a jewelry store without being seen.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — a failed attempt can be retried at another store.",
+   "guideFull": "Rob a jewelry store without being detected. Go in quiet: no alarms, no witnesses calling it in, and get out unseen; if you are spotted the attempt fails, but stores can be robbed again (general GTA series pattern — unconfirmed for GTA VI) (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 40,
    "name": "Maximum Withdrawal",
    "description": "Rob 5 Bank Vaults and escape.",
    "grade": "silver",
-   "guide": "Rob 5 bank vaults and escape (silver)."
+   "guide": "Rob 5 bank vaults and escape (silver).",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — vault robberies can be repeated until five escapes are banked.",
+   "target": "5 bank vaults",
+   "guideFull": "Rob 5 Bank Vaults and escape. Five separate vault robberies, each finished with a clean getaway; the escape is part of the requirement in the description, so plan the exit before you start each one (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 41,
    "name": "A Classic Blitz Play",
    "description": "Rob an Armored Truck and escape.",
    "grade": "bronze",
-   "guide": "Rob an armored truck and escape."
+   "guide": "Rob an armored truck and escape.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — armored trucks are a repeatable free-roam target.",
+   "guideFull": "Rob an Armored Truck and escape. Catch a truck on its route, take its cargo and lose the heat; armored trucks are a recurring free-roam target in the series (general GTA series pattern — unconfirmed for GTA VI) (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 42,
    "name": "The Goodtime State",
    "description": "Explore all of Leonida.",
    "grade": "bronze",
-   "guide": "Explore all 52 areas of Leonida."
+   "guide": "Explore all 52 areas of Leonida.",
+   "kind": "collectible",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — areas stay explorable for the whole game.",
+   "target": "52 areas of Leonida",
+   "guideFull": "Explore all of Leonida — 52 areas by the official list data. Travel every region until the map is fully uncovered; the last few areas are usually the remote ones you never pass through on missions (source: official trophy description; count from the official list data).",
+   "sources": ["Official trophy description (PlayStation list)", "PSN count target (official list data)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 43,
    "name": "Pest Control",
    "description": "Rob an Illegal Operation belonging to each gang.",
    "grade": "bronze",
-   "guide": "Rob one illegal operation of each of the 9 gangs."
+   "guide": "Rob one illegal operation of each of the 9 gangs.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable on the description — one operation per gang, nothing one-time stated.",
+   "target": "9 gangs",
+   "guideFull": "Rob an Illegal Operation belonging to each gang — 9 gangs by the official list data. One operation per gang is enough; keep a list of gangs done so none is robbed twice while another is missed (source: official trophy description; count from the official list data).",
+   "sources": ["Official trophy description (PlayStation list)", "PSN count target (official list data)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 44,
    "name": "In The Beginning…",
    "description": "Enjoy a cocktail with a view on Ocean Beach.",
    "grade": "bronze",
-   "guide": "Have a cocktail with a view on Ocean Beach."
+   "guide": "Have a cocktail with a view on Ocean Beach.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — a scene at a named location that stays in the world.",
+   "guideFull": "Enjoy a cocktail with a view on Ocean Beach. Go to Ocean Beach, order the cocktail where drinks are served and take in the view; a small scene trophy, repeatable at the location (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 45,
    "name": "Capital Offense",
    "description": "Smash your way out of a vehicle showroom in classic style.",
    "grade": "bronze",
-   "guide": "Smash out of a vehicle showroom in style."
+   "guide": "Smash out of a vehicle showroom in style.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — showrooms stay in the world.",
+   "guideFull": "Smash your way out of a vehicle showroom in classic style. Take a car inside a showroom out through the glass; 'in classic style' is the description's flourish, not a stated condition — the stated act is the smash-out itself (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 46,
    "name": "Let’s Go Bowling",
    "description": "Follow-through at the Kolt & Associates' bowling alley.",
    "grade": "bronze",
-   "guide": "Play bowling at the Kolt & Associates alley."
+   "guide": "Play bowling at the Kolt & Associates alley.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — bowling can be replayed at the named alley.",
+   "guideFull": "Follow-through at the Kolt & Associates' bowling alley. Play a game of bowling at that named alley and bowl properly — the description asks for a follow-through, so take your shots rather than idling through the game (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 47,
    "name": "Personal Best",
    "description": "A partnership with mass appeal.",
    "grade": "bronze",
-   "guide": "A partnership moment with mass appeal."
+   "guide": "A partnership moment with mass appeal.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Unknown from the description — no act or condition is stated, so nothing can be called missable.",
+   "guideFull": "The description says only 'A partnership with mass appeal.' That points at something done with your partner that draws a crowd or an audience, but it names no act, place or count, so no honest steps can be given yet: watch for a partner activity with an audience as you play (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 48,
    "name": "Actions Speak Louder",
    "description": "Choices made (for better or worse).",
    "grade": "bronze",
-   "guide": "Make choices (PSN tracks a count to 500)."
+   "guide": "Make choices (PSN tracks a count to 500).",
+   "kind": "missable",
+   "hidden": false,
+   "missable": true,
+   "missableReason": "Watch-out: the description is about choices made, and story choices are typically one-time per playthrough — a choice locked behind a finished chapter may not come again. The count target suggests most choices repeat; the description does not confirm any single one is required.",
+   "target": "500 choices",
+   "guideFull": "The description is 'Choices made (for better or worse)', and the official list data tracks a count to 500. Make choices as the game offers them and the counter climbs; flagged as a watch-out because story choices are typically one-time per playthrough, so a choice locked behind a finished chapter may not come again — the description does not confirm any single choice is required (source: official trophy description; count from the official list data).",
+   "sources": ["Official trophy description (PlayStation list)", "PSN count target (official list data)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 49,
    "name": "Bad Luck, I Guess",
    "description": "Second time's the charm.",
    "grade": "bronze",
-   "guide": "Succeed on a second try."
+   "guide": "Succeed on a second try.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable on the description — it rewards a retry, so failure is part of the path.",
+   "guideFull": "'Second time's the charm': succeed at something on the second attempt. The description names no activity, so the practical reading is to retry a failed attempt promptly and let the trophy find you; it cannot be planned more precisely from the description alone (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 50,
    "name": "The Truth Is Out There",
    "description": "What the hell just happened?",
    "grade": "bronze",
-   "guide": "Witness something strange."
+   "guide": "Witness something strange.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Unknown from the description — no act or condition is stated, so nothing can be called missable.",
+   "guideFull": "'What the hell just happened?' — witness something strange. An oddity trophy: explore off the beaten path and investigate anything out of place; the description deliberately says no more, and neither can we (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 51,
    "name": "Ten Pin",
    "description": "Bowl 'em over with a melee drive-by.",
    "grade": "bronze",
-   "guide": "Knock someone down with a melee drive-by."
+   "guide": "Knock someone down with a melee drive-by.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — repeatable in free roam.",
+   "guideFull": "Bowl 'em over with a melee drive-by: knock a person down with a melee attack from a moving vehicle. Line up a pedestrian and swing as you pass; a bike at low speed makes the timing easier (general GTA series pattern — unconfirmed for GTA VI) (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 52,
    "name": "Dime on the Dollar",
    "description": "Earn $250,000 laundering Marked Bills through your contacts.",
    "grade": "bronze",
-   "guide": "Launder $250,000 of marked bills."
+   "guide": "Launder $250,000 of marked bills.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — an earnings total that builds over the whole game.",
+   "target": "$250,000 laundered",
+   "guideFull": "Earn $250,000 laundering Marked Bills through your contacts. Feed marked bills to your laundering contacts until the earned total reaches the figure in the description; this is an earner that builds over the whole game, so start routing bills early instead of grinding at the end (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 53,
    "name": "Treat Yo Self",
    "description": "Spend $100,000 across all shops.",
    "grade": "bronze",
-   "guide": "Spend $100,000 in shops."
+   "guide": "Spend $100,000 in shops.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — a spending total that only grows.",
+   "target": "$100,000 spent",
+   "guideFull": "Spend $100,000 across all shops. Ordinary spending counts across every shop, so this usually completes by buying vehicles, clothes and gear you wanted anyway; check the running total late in the game before forcing it (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 54,
    "name": "Little Boxes",
    "description": "Purchase all garage properties.",
    "grade": "bronze",
-   "guide": "Buy all 8 garage properties."
+   "guide": "Buy all 8 garage properties.",
+   "kind": "misc",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — properties stay on sale until bought.",
+   "target": "8 garage properties",
+   "guideFull": "Purchase all garage properties — 8 by the official list data. Buy each garage as funds allow; properties stay on sale, so this is a money goal, not a missable (source: official trophy description; count from the official list data).",
+   "sources": ["Official trophy description (PlayStation list)", "PSN count target (official list data)", "Guide text: our own words from that description — unconfirmed in game"]
   },
   {
    "id": 55,
    "name": "On the Spot",
    "description": "Register 10 vehicles to the Scooter Bros app.",
    "grade": "bronze",
-   "guide": "Register 10 vehicles in the Scooter Bros app."
+   "guide": "Register 10 vehicles in the Scooter Bros app.",
+   "kind": "collectible",
+   "hidden": false,
+   "missable": false,
+   "missableReason": "Not missable — registrations only accumulate.",
+   "target": "10 vehicles registered",
+   "guideFull": "Register 10 vehicles to the Scooter Bros app. When you find a vehicle worth keeping, register it in the app; ten registrations finish the count in the description (source: official trophy description).",
+   "sources": ["Official trophy description (PlayStation list)", "Guide text: our own words from that description — unconfirmed in game"]
   }
  ]
 }
