@@ -20,26 +20,33 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-frontend.ts';
 
-const repoDir = fileURLToPath(new URL('.', import.meta.url));
-const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+const repoRoot = fileURLToPath(new URL('.', import.meta.url));
+const outRoot = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
-mkdirSync(outputDir, { recursive: true });
-cpSync(join(repoDir, 'app'), join(outputDir, 'app'), { recursive: true });
-mkdirSync(join(outputDir, 'screenshots'), { recursive: true });
-if (existsSync(join(repoDir, 'screenshots'))) {
-  cpSync(join(repoDir, 'screenshots'), join(outputDir, 'screenshots'), { recursive: true });
+function copyEntryTree() {
+  mkdirSync(outRoot, { recursive: true });
+  cpSync(join(repoRoot, 'app'), join(outRoot, 'app'), { recursive: true });
+  mkdirSync(join(outRoot, 'screenshots'), { recursive: true });
+  if (existsSync(join(repoRoot, 'screenshots'))) {
+    cpSync(join(repoRoot, 'screenshots'), join(outRoot, 'screenshots'), { recursive: true });
+  }
 }
 
-// The caps buildDossier is given are the scorer's own (the kit's gate limits): the text
-// cap shapes the dossier's bytes; the screenshot and app caps refuse anything the
+// The caps buildDossier is given are the scorer's own (the kit's gate limits): the
+// text cap shapes the dossier's bytes; the screenshot and app caps refuse anything the
 // scorer would refuse — at most 4 screenshots of at most 256 KiB each, at most 993
 // files and directories in app/, at most 48 MiB of app files.
-writeFileSync(
-  join(outputDir, 'dossier.json'),
-  buildDossier(outputDir, {
-    text_max_bytes: 163840,
-    screenshots: { max: 4, max_bytes: 262144 },
-    app_max_files: 993,
-    app_max_bytes: 50331648,
-  }),
-);
+const GATE_CAPS = {
+  text_max_bytes: 163840,
+  screenshots: { max: 4, max_bytes: 262144 },
+  app_max_files: 993,
+  app_max_bytes: 50331648,
+};
+
+function writeDossierFile() {
+  const dossier = buildDossier(outRoot, GATE_CAPS);
+  writeFileSync(join(outRoot, 'dossier.json'), dossier);
+}
+
+copyEntryTree();
+writeDossierFile();
